@@ -1,0 +1,200 @@
+<style>
+.shooting-bg {
+  background-color: black;
+  -webkit-animation: bugfix infinite 1s; }
+  @-webkit-keyframes bugfix { from {padding:0;} to {padding:0;} 
+}
+.shooting-bg * {
+  margin: 0;
+  padding: 0;
+  cursor: crosshair;
+  box-sizing: border-box;
+}
+
+
+.shooting-bg input[type=checkbox] {
+   display: none;
+}
+
+/* styling */
+
+.shooting-bg h1 {
+  position:fixed;
+  z-index:-1;
+  top:.25em;
+  left:8em;
+  font-size:1.3em;
+  width:14em;
+  color:#666;
+}
+.shooting-bg .can {
+  display: inline-block;
+  position: relative;
+  height: 195px;
+  width: 150px;
+  margin: 25px;
+  background: red;
+}
+.shooting-bg .can:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  margin-left: -25px;
+  top: 52%;
+  margin-top: -25px;
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  background-color: #FFD700;
+  z-index: 5;
+}
+.shooting-bg .can:after {
+  top: -5px;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 10px;
+  position: absolute;
+  border-radius: 100%;
+  background-color: #808080;
+  z-index: 10;
+}
+.shooting-bg .lower {
+  width: 100%;
+  height: 100px;
+  position: absolute;
+  top: 95px;
+  background-color: #fffee4;
+  z-index: 2;
+}
+.shooting-bg .lower:before {
+  width: 100%;
+  height: 10px;
+  position: absolute;
+  border-radius: 100%;
+  background-color: #F00;
+  top: -5px;
+  z-index: 0;
+  content: "";
+  left: 0;
+}
+.shooting-bg .lower:after {
+  content: "";
+  width: 100%;
+  height: 10px;
+  position: absolute;
+  border-radius: 100%;
+  background-color: #FFFEE4;
+  top: 95px;
+  z-index: -2;
+  left: 0;
+}
+.shooting-bg .score{
+  position: fixed;
+  bottom: 0;
+  left: 75%;
+  color: #fff;
+}
+
+/*--------------checked---------*/
+.shooting-bg input:checked + label {
+   -webkit-animation-duration: .5s;
+     -moz-animation-duration: .5s;
+       -o-animation-duration: .5s;
+          animation-duration: .5s;
+  -webkit-animation-fill-mode: both;
+     -moz-animation-fill-mode: both;
+       -o-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-name: hit;
+  -moz-animation-name: hit;
+}
+.shooting-bg input:checked + label {
+  counter-increment: bang;
+}
+.shooting-bg input:checked ~ .score:after {
+  content: counter(bang);
+}
+
+
+
+
+/********ANIMATION STYLES*********/
+@-webkit-keyframes hit {
+  0% {-webkit-transform: scale(1); opacity: 1;} 
+  10% {-webkit-transform: scale(0.9) rotate(72deg); opacity: 1;}
+  20% {-webkit-transform: scale(0.8) rotate(144deg); opacity: 1;}
+  30% {-webkit-transform: scale(0.7) rotate(216deg); opacity: 1;}
+  40% {-webkit-transform: scale(0.6) rotate(288deg); opacity: 1;}
+  50% {-webkit-transform: scale(0.5) rotate(360deg); opacity: 1;}
+  60% {-webkit-transform: scale(0.4) rotate(432deg); opacity: 1;}
+  70% {-webkit-transform: scale(0.3) rotate(504deg); opacity: 0.75;}
+  80% {-webkit-transform: scale(0.2) rotate(576deg); opacity: 0.5;}
+  90% {-webkit-transform: scale(0.1) rotate(648deg); opacity: 0.25;}
+  100% {-webkit-transform: scale(0) rotate(720deg); opacity: 0; display: none;}
+}
+
+@-moz-keyframes hit {
+  0% {-moz-transform: scale(1); opacity: 1;} 
+  10% {-moz-transform: scale(0.9) rotate(72deg); opacity: 1;}
+  20% {-moz-transform: scale(0.8) rotate(144deg); opacity: 1;}
+  30% {-moz-transform: scale(0.7) rotate(216deg); opacity: 1;}
+  40% {-moz-transform: scale(0.6) rotate(288deg); opacity: 1;}
+  50% {-moz-transform: scale(0.5) rotate(360deg); opacity: 1;}
+  60% {-moz-transform: scale(0.4) rotate(432deg); opacity: 1;}
+  70% {-moz-transform: scale(0.3) rotate(504deg); opacity: 0.75;}
+  80% {-moz-transform: scale(0.2) rotate(576deg); opacity: 0.5;}
+  90% {-moz-transform: scale(0.1) rotate(648deg); opacity: 0.25;}
+  100% {-moz-transform: scale(0) rotate(720deg); opacity: 0; display: none;}
+}
+
+@-o-keyframes hit {
+  0% {-o-transform: scale(1); opacity: 1;} 
+  10% {-o-transform: scale(0.9) rotate(72deg); opacity: 1;}
+  20% {-o-transform: scale(0.8) rotate(144deg); opacity: 1;}
+  30% {-o-transform: scale(0.7) rotate(216deg); opacity: 1;}
+  40% {-o-transform: scale(0.6) rotate(288deg); opacity: 1;}
+  50% {-o-transform: scale(0.5) rotate(360deg); opacity: 1;}
+  60% {-o-transform: scale(0.4) rotate(432deg); opacity: 1;}
+  70% {-o-transform: scale(0.3) rotate(504deg); opacity: 0.75;}
+  80% {-o-transform: scale(0.2) rotate(576deg); opacity: 0.5;}
+  90% {-o-transform: scale(0.1) rotate(648deg); opacity: 0.25;}
+  100% {-o-transform: scale(0) rotate(720deg); opacity: 0; display: none;}
+}
+</style>
+<div class="shooting-bg">
+	<!-- <h1>CSS SHOOTING GALLERY</h1> -->
+
+	<input type="checkbox" id="button1" />
+	<label class="can" for="button1" onclick>
+		<div class="lower"></div>
+	</label>
+
+	<input type="checkbox" id="button2" />
+	<label class="can" for="button2" onclick>
+		<div class="lower"></div>
+	</label>
+
+	<input type="checkbox" id="button3" />
+	<label class="can" for="button3" onclick>
+		<div class="lower"></div>
+	</label>
+
+	<input type="checkbox" id="button4" />
+	<label class="can" for="button4" onclick>
+		<div class="lower"></div>
+	</label>
+
+	<input type="checkbox" id="button5" />
+	<label class="can" for="button5" onclick>
+		<div class="lower"></div>
+	</label>
+
+	<input type="checkbox" id="button6" />
+	<label class="can" for="button6" onclick>
+		<div class="lower"></div>
+	</label>
+
+	<div class="score">Score: </div>
+
+</div>

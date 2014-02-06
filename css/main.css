@@ -13,7 +13,7 @@
 html, body { height: 100%; }
 
 body {
-  background-color: #FFF;
+  /*background-color: #FFF;*/
   font: 13.34px Helvetica, Arial, sans-serif;
   font-size: small;
   text-align: center;
@@ -27,7 +27,7 @@ p { margin: 1em 0; }
 
 a         { color: #00a; }
 a:hover   { color: #000; }
-a:visited { color: #a0a; }
+/*a:visited { color: #a0a; }*/
 
 /*****************************************************************************/
 /*
@@ -56,9 +56,10 @@ a:visited { color: #a0a; }
 /*****************************************************************************/
 
 .site {
-  font-size: 115%;
+  /*font-size: 115%;*/
   text-align: justify;
-  width: 42em;
+  /*width: 42em;*/
+  max-width: 50em;
   margin: 3em auto 2em;
   line-height: 1.5em;
 }
@@ -166,3 +167,21 @@ a:visited { color: #a0a; }
 /*
 /*****************************************************************************/
 
+body {
+  font-size: 16px;
+  background-color: #F5F5F5;
+}
+h1 {
+  font-size: 2em;
+  font-family: 'gotham';
+  font-weight: bold;
+  text-transform: uppercase;
+}
+h2 {
+  font-size: 1.6em;
+  font-family: 'gotham';
+  text-transform: uppercase;
+}
+p {
+  font-size: 1.2em;
+}
