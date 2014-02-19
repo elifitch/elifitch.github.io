@@ -1,10 +1,12 @@
 ---
 layout: post
 title: Change
+subtitle: herple derple herple derple herple derple
 permalink: /blog/change
 excerptLong: herple derple herple derple herple derple herple derple herple derple herple derple herple derple herple derple herple derple herple derple 
 excerptShort: herple derple
-hero: ../assets/img/splash.jpg
+hero: nevada_abandoned_gas_station_02.jpg
+hero-adj: 
 ---
 
 Outline:

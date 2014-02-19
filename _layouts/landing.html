@@ -25,53 +25,33 @@
     </head>
     <body>
       {% include header.html %}
-      <div class="hero">
+      <div class="jumbotron">
         <div class="logo">
           <div class="e"></div>
           <div class="f"></div>
           <!-- <h1>Front End / UX</h1> -->
         </div>
       </div>
+      <section class="about">
+        <h2>About</h2>
+        <p><strong>Eli Fitch</strong> is a front end developer with a passion for creating unique and engaging experiences for users. He proudly lives and works in his hometown of Washington, D.C.</p>
+      </section>
           
           {{ content }}
 
-          <div class="experiments" id="exp">
-            <h1>Experiments</h1>
+          <section class="experiments clearfix " id="experiments">
+            <h2>Experiments</h2>
             <a href="http://codepen.io/EliFitch/pen/waJpo" class="pen shooting-gallery">
-              <h3>CSS Shooting Gallery</h3>
+              <div class="tint"></div>
+              <div class="overlay-wrapper"><h1 class="overlay">CSS Shooting Gallery</h1></div>
             </a>
             <a href="http://codepen.io/EliFitch/pen/zGqHK" class="pen rotating-nav">
-              <h3>CSS3D Rotating Navigation</h3>
+              <div class="tint"></div>
+              <div class="overlay-wrapper"><h1 class="overlay">Rotating CSS3D Nav</h1></div>
             </a>
             <h3>More coming soon...</h3>
-            <!-- <div class="pen shooting-gallery">
-              <p data-height='526' data-theme-id='0' data-slug-hash='waJpo' data-default-tab='result' class='codepen'>See the Pen <a href='http://codepen.io/EliFitch/pen/waJpo'>Pure CSS shooting gallery (WIP)</a> by Eli Fitch (<a href='http://codepen.io/EliFitch'>@EliFitch</a>) on <a href='http://codepen.io'>CodePen</a>.</p><script async src='//codepen.io/assets/embed/ei.js'></script>
-            </div>
-            <div class="pen">
-              <p data-height="268" data-theme-id="0" data-slug-hash="kvFAE" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/EliFitch/pen/kvFAE'>Text masking experiment</a> by Eli Fitch (<a href='http://codepen.io/EliFitch'>@EliFitch</a>) on <a href='http://codepen.io'>CodePen</a>.</p><script async src="//codepen.io/assets/embed/ei.js"></script>
-            </div>
-            <div class="pen">
-              <p data-height="268" data-theme-id="0" data-slug-hash="hjDEe" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/EliFitch/pen/hjDEe'>Hexagon logo concept</a> by Eli Fitch (<a href='http://codepen.io/EliFitch'>@EliFitch</a>) on <a href='http://codepen.io'>CodePen</a>.</p><script async src="//codepen.io/assets/embed/ei.js"></script>
-            </div>
-            <div class="pen rotating-nav">
-              <p data-height="268" data-theme-id="0" data-slug-hash="zGqHK" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/EliFitch/pen/zGqHK'>Rotating Nav Concept</a> by Eli Fitch (<a href='http://codepen.io/EliFitch'>@EliFitch</a>) on <a href='http://codepen.io'>CodePen</a>.</p><script async src="//codepen.io/assets/embed/ei.js"></script>
-            </div> -->
-          </div>
-          <div class="footer">
-            <div class="contact">
-              <p>
-                Your Name<br />
-                What You Are<br />
-                you@example.com
-              </p>
-            </div>
-            <div class="contact">
-              <p>
-                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
-                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
-              </p>
-            </div>
-          </div>
+          </section>
+          {% include footer.html %}
           
           <!--<script type="text/javascript">
             $(".shooting-gallery").click(function(){
@@ -89,6 +69,13 @@
           $(document).ready(function(){
             $('header').localScroll();
           })
+        </script>
+        <script>
+        console.log('script runs');
+        $(document).on('resize', function(){
+          console.log('running');
+          $('.overlay').css('line height', $(this).parent().css('line height'));
+        });
         </script>
           
     </body>

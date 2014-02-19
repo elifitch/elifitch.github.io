@@ -1,19 +1,27 @@
 @import 'bourbon/bourbon';
 
+//whitesmoke   color: #F5F5F5;
+// @function outline($stroke, $color) {
+//   @return -$stroke+px $stroke+px $color, -$stroke*2+px $stroke*2+px $color, -$stroke*3+px $stroke*3+px $color, -$stroke*4+px $stroke*4+px $color;
+// }
+@function outline($stroke, $color) {
+  @return $stroke+px $stroke+px $color, -$stroke+px $stroke+px $color, ($stroke+px) (-$stroke+px) $color, (-$stroke+px) (-$stroke+px) $color;
+}
+
 $logo-W: 200px;
 $logo-H: 50px;
 $bar-height: 20%;
 $bar-width: 40%;
 $bar-spacing: 160%;
 
-// @font-face{ 
-//   font-family: 'bodonitown';
-//   src: url('../assets/fonts/Bodonitown-webfont.eot');
-//   src: url('../assets/fonts/Bodonitown-webfont.eot?iefix') format('eot'),
-//        url('../assets/fonts/Bodonitown-webfont.woff') format('woff'),
-//        url('../assets/fonts/Bodonitown-webfont.ttf') format('truetype'),
-//        url('../assets/fonts/Bodonitown-webfont.svg#webfont') format('svg');
-// }
+@font-face{ 
+  font-family: 'bodonitown';
+  src: url('../assets/fonts/Bodonitown-webfont.eot');
+  src: url('../assets/fonts/Bodonitown-webfont.eot?iefix') format('eot'),
+       url('../assets/fonts/Bodonitown-webfont.woff') format('woff'),
+       url('../assets/fonts/Bodonitown-webfont.ttf') format('truetype'),
+       url('../assets/fonts/Bodonitown-webfont.svg#webfont') format('svg');
+}
 
 @font-face {
     font-family: 'Gotham';
@@ -52,6 +60,41 @@ $bar-spacing: 160%;
 html, body {
   height: 100%;
 }
+body {
+  font-size: 16px;
+  background-color: #F5F5F5;
+}
+h1 {
+  // font-size: 3em;
+  font-size: 4em;
+  font-family: 'gotham';
+  font-weight: bold;
+  text-transform: uppercase;
+
+}
+h2 {
+  font-size: 2.4em;
+  font-family: 'gotham';
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 1em;
+  width: auto;
+  display: block;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 5px;
+  color: #ccc;
+  text-align: right;
+  font-weight: 400;
+  cursor: default;
+}
+h3 {
+  font-size: 1.6em;
+  font-family: 'gotham';
+  text-transform: uppercase;
+}
+p {
+  font-size: 1.2em;
+}
 h1 a, h2 a, h3 a, h4 a {
   text-decoration: none;
   color: #000;
@@ -59,32 +102,25 @@ h1 a, h2 a, h3 a, h4 a {
   &:hover {
     background-color: #000;
     color: #fff;
+    text-decoration: none;
   }
 }
-h1 {
-    width: auto;
-    display: block;
-    border-bottom: 2px solid #ccc;
-    padding-bottom: 5px;
-    color: #ccc;
-    text-align: right;
-    font-weight: 400;
-    font-size: 2.4em;
-    cursor: default;
-}
-h3 {
-    font-family: 'deming', 'courier new', courier, serif;
-    color: #000;
-    font-weight: bold;
-    text-align: center;
-    font-size: 2em;
-    margin: 20px 0;
-}
+//Old h3 was an overlay of the experiments and stuff. unsure how 
+// h3 {
+//     font-family: 'deming', 'courier new', courier, serif;
+//     color: #000;
+//     font-weight: bold;
+//     text-align: center;
+//     font-size: 2em;
+//     margin: 20px 0;
+// }
 p {
   // font-family: 'bodonitown', georgia, serif;
   // font-family: 'Old Standard TT', georgia, serif;
   font-family: 'courier new', courier, georgia, serif;
   letter-spacing: 1px;
+  font-size: 1.2em;
+  line-height: 1.6em;
 }
 hr {
   border: 1px dashed #ccc;
@@ -119,6 +155,7 @@ nav {
     &:hover {
       background-color: #000;
       color: #fff;
+      text-decoration: none;
     }
   }
 }
@@ -181,7 +218,7 @@ nav {
   display: inline-block;
   text-decoration: none;
 }
-.hero {
+.jumbotron {
   width: 100%;
   height: 100%;
   background-image: url('../assets/img/USS_Macon_over_Manhattan.png');
@@ -212,40 +249,47 @@ nav {
     }
   }
 }
+
 .landing-blog {
   // max-width: 50em;
   // padding-top: 2em;
   // text-align: left;
 }
-.posts {
-  padding-top: 2em;
+.posts, .post {
+  // padding-top: 2em;
   max-width: 50em;
   margin: 0 auto;
   display: block;
-  h2 a{
+  h3 a{
     margin-left: -5px;
   }
 }
-.experiments, .landing-blog {
+section {
   width: 80%;
+  max-width: 1200px;
   display: block;
   margin: 0 auto;
-  padding: 2em 0;
+  // padding: 2em 0;
+  padding: 2em;
   text-align: left;
 }
-// .pen {
-//   display: inline-block;
-//   width: 43%;
-//   margin: 3%;
-// }
-// .shooting-gallery, .rotating-nav {
-//   display: block;
-//   width: 100%;
-//   margin: 0 auto;
-//   min-width: 50em;
-// }
-.pen {
-  display: inline-block;
+.about p {
+  // max-width: 50em;
+  max-width: 800px;
+  display: block;
+  margin: 0 auto;
+}
+.experiments {
+  text-align: center;
+  h3 {
+    clear: both;
+    padding-top: 20px;
+  }
+}
+//commented out pen is from when they were next to each other
+/*.pen {
+  // display: inline-block;
+  display: inline-table;
   width: 40%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -253,20 +297,117 @@ nav {
   border-radius: 4px;
   text-decoration: none;
   vertical-align: top;
-  margin: 0 4%;
-  text-shadow: 1px 1px rgba(255,255,255,.3), -1px 1px rgba(255,255,255,.3), 1px -1px rgba(255,255,255,.3), -1px -1px rgba(255,255,255,.3);
-  h3 {
-    margin-top: 55px;
-    border-bottom: none;
-    line-height: 65px;
+  margin: 0 2%;
+  border-bottom: none;
+  position: relative;
+  z-index: 1;
+  min-width: 435px;
+}*/
+.pen {
+  display: table;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  min-height: 300px;
+  text-decoration: none;
+  vertical-align: top;
+  margin: 20px 0;
+  border-bottom: none;
+  position: relative;
+  z-index: 1;
+  &:visited {
+    color: inherit;
   }
+  /*&:nth-child(even) {
+    float: left;
+  }
+  &:nth-child(odd) {
+    float: right;
+  }*/
+  /*.tint {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 62%;
+    height: 90%;
+    max-width: 270px;
+    border-radius: 100%;
+    margin: auto;
+    background-color: black;
+    opacity: .6;
+    z-index: 2;
+    display: inline;
+    transition: all .2s;
+  }*/
+  .tint {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    background-color: black;
+    opacity: 0;
+    z-index: 2;
+    display: inline;
+    transition: all .4s;
+  }
+  /*h4 {
+    font-size: 1.6em;
+    font-family: 'courier new', courier, monospace;
+    font-weight: 300;
+    color: #fff;
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    margin: 0 auto;
+    display: table-cell;
+    padding: 0 19%;
+    text-align: center;
+    vertical-align: middle;
+  }*/
+  h1 {
+    z-index: 3;
+    position: relative;
+    // transition: all .2s;
+    cursor: pointer;
+  }
+  &:hover {
+    text-decoration: none;
+  }
+  // &:hover .tint {
+  //   opacity: .8;
+  //   transition: all .4s;
+  // }
+  &:hover h1 {
+    background-color: black;
+    color: white;
+    text-shadow: none;
+    // transition: all .2s;
+  }
+}
+.overlay-wrapper, .overlay {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    cursor: default;
+}
+.overlay {
+    display: inline;
+    padding: .2em;
+    text-shadow: 0px 0px 100px whitesmoke;
 }
 .pen.shooting-gallery {
   background-image: url('../assets/img/courtesy-old-photos.blogspot.com_-bw.jpg');
-  h3 {
-    margin-top: 80px;
-    // line-height: 65px;
-  }
+  // h3 {
+  //   margin-top: 80px;
+  //   line-height: 65px;
+  // }
 }
 .pen.rotating-nav {
   background-image: url('../assets/img/compass-bw.jpg');
@@ -282,10 +423,11 @@ nav {
     margin-top: 0;
   }
   .pen {
-    display: block;
+    display: table;
     width: 100%;
-    background-size: contain;
+    background-size: cover;
     min-height: auto;
+    margin: 0 auto;
   }
   .pen.shooting-gallery {
   h3 {
@@ -293,7 +435,87 @@ nav {
   }
 }
 }
+@media screen and (max-width: 600px) {
+  .jumbotron {
+    background-position: -200px 0;
+    .logo {
+      width: $logo-W*1.5;
+      height: $logo-H*1.5;
+      .f:after {
+        font-size: .8em;
+        text-shadow: 0px 0px 25px white;
+      }
+    }
+  }
+}
 
 
 
 
+//POSTS STYLES
+.hero {
+  width: 100%;
+  height: 50%;
+  background-position: center center;
+  background-size: cover;
+  position: relative;
+  display: table;
+}
+
+//.post styles are with .posts
+.post {
+  text-align: left;
+}
+
+
+//FOOTER STYLES
+footer {
+  color: #666;
+  border-top: 4px solid #eee;
+  margin-top: 2em;
+  overflow: hidden;
+  // text-align: justify;
+  // &:after{
+  //   content: '';
+  //   display: inline-block;
+  //   width: 100%;
+  // }
+  h3 {
+    text-align: left;
+    margin-bottom: 1em;
+  }
+  a {
+    display: inline-block;
+    margin-right: 10%;
+    color: #666;
+    text-decoration: none;
+    &:visited {
+      color: #666;
+    }
+    img {
+      max-width: 100px;
+      max-height: 75px;
+    }
+    p {
+      opacity: 0;
+      transition: all .2s;
+      display: block;
+      text-align: center;
+    }
+    &:hover {
+      text-decoration: none;
+    }
+    &:hover p {
+      opacity: 1;
+      transition: all .2s;
+    }
+  }
+}
+
+//convert this to an all purpose centering class maybe?
+.footer-menu {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+}

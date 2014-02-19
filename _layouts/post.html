@@ -1,10 +1,15 @@
 ---
 layout: default
 ---
-<style>{% include post.css %}</style>
-<h2>{{ page.title }}</h2>
-<p class="meta">{{ page.date | date_to_string }}</p>
-
+<!--<style>{% include post.css %}</style>-->
+<div class="hero" style="background-image:url('../../assets/img/hero/{{page.hero}}')">
+	<h1 class="overlay">{{ page.title }}</h1>
+	{% if page.subtitle %}
+		<!--<hr>
+		<h2 class="overlay">{{ page.subtitle}}</h2>-->
+	{% endif %}
+</div>
 <div class="post">
-{{ content }}
+	<p class="meta">{{ page.date | date_to_string }}</p>
+	{{ content }}
 </div>

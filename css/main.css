@@ -25,8 +25,8 @@ h1, h2, h3, h4, h5, h6 {
 h1 { margin-bottom: 1em; }
 p { margin: 1em 0; }
 
-a         { color: #00a; }
-a:hover   { color: #000; }
+/*a         { color: #00a; }*/
+a:hover   { text-decoration: underline; }
 /*a:visited { color: #a0a; }*/
 
 /*****************************************************************************/
@@ -95,7 +95,7 @@ a:hover   { color: #000; }
   color: #aaa;
 }
 
-.footer {
+/*.footer {
   font-size: 80%;
   color: #666;
   border-top: 4px solid #eee;
@@ -120,7 +120,7 @@ a:hover   { color: #000; }
 
 .footer .rss img {
   border: 0;
-}
+}*/
 
 /*****************************************************************************/
 /*
@@ -167,21 +167,16 @@ a:hover   { color: #000; }
 /*
 /*****************************************************************************/
 
-body {
-  font-size: 16px;
-  background-color: #F5F5F5;
-}
-h1 {
-  font-size: 2em;
-  font-family: 'gotham';
-  font-weight: bold;
-  text-transform: uppercase;
-}
-h2 {
-  font-size: 1.6em;
-  font-family: 'gotham';
-  text-transform: uppercase;
-}
-p {
-  font-size: 1.2em;
-}
+.clearfix:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+     }
+.clearfix { display: inline-block; }
+/* start commented backslash hack \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/* close commented backslash hack */
