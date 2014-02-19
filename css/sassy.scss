@@ -474,33 +474,30 @@ footer {
   border-top: 4px solid #eee;
   margin-top: 2em;
   overflow: hidden;
-  // text-align: justify;
-  // &:after{
-  //   content: '';
-  //   display: inline-block;
-  //   width: 100%;
-  // }
-  h3 {
-    text-align: left;
-    margin-bottom: 1em;
+  section {
+    padding-bottom: 0;
+  }
+  h2 {
+    border-bottom: none;
   }
   a {
     display: inline-block;
-    margin-right: 10%;
+    // margin-right: 10%;
     color: #666;
     text-decoration: none;
     &:visited {
       color: #666;
     }
     img {
-      max-width: 100px;
-      max-height: 75px;
+      max-width: 150px;
+      max-height: 100px;
     }
     p {
       opacity: 0;
       transition: all .2s;
       display: block;
       text-align: center;
+      margin: 0;
     }
     &:hover {
       text-decoration: none;
@@ -516,6 +513,11 @@ footer {
 .footer-menu {
   display: block;
   margin: 0 auto;
-  width: 100%;
-  text-align: center;
+  width: 80%;
+  text-align: justify;
+  &:after{
+    content: '';
+    display: inline-block;
+    width: 100%;
+  }
 }

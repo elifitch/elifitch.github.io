@@ -369,24 +369,25 @@ footer {
   border-top: 4px solid #eee;
   margin-top: 2em;
   overflow: hidden; }
-  footer h3 {
-    text-align: left;
-    margin-bottom: 1em; }
+  footer section {
+    padding-bottom: 0; }
+  footer h2 {
+    border-bottom: none; }
   footer a {
     display: inline-block;
-    margin-right: 10%;
     color: #666;
     text-decoration: none; }
     footer a:visited {
       color: #666; }
     footer a img {
-      max-width: 100px;
-      max-height: 75px; }
+      max-width: 150px;
+      max-height: 100px; }
     footer a p {
       opacity: 0;
       transition: all .2s;
       display: block;
-      text-align: center; }
+      text-align: center;
+      margin: 0; }
     footer a:hover {
       text-decoration: none; }
     footer a:hover p {
@@ -396,5 +397,9 @@ footer {
 .footer-menu {
   display: block;
   margin: 0 auto;
-  width: 100%;
-  text-align: center; }
+  width: 80%;
+  text-align: justify; }
+  .footer-menu:after {
+    content: '';
+    display: inline-block;
+    width: 100%; }
