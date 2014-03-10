@@ -11,7 +11,7 @@
 	/*
 	 * Global api.
 	 */
-	var skrollr = window.skrollr = {
+	var skrollr = {
 		get: function() {
 			return _instance;
 		},
@@ -19,7 +19,7 @@
 		init: function(options) {
 			return _instance || new Skrollr(options);
 		},
-		VERSION: '0.6.11'
+		VERSION: '0.6.22'
 	};
 
 	//Minify optimization.
@@ -60,10 +60,12 @@
 	//The property which will be added to the DOM element to hold the ID of the skrollable.
 	var SKROLLABLE_ID_DOM_PROPERTY = '___skrollable_id';
 
+	var rxTouchIgnoreTags = /^(?:input|textarea|button|select)$/i;
+
 	var rxTrim = /^\s+|\s+$/g;
 
 	//Find all data-attributes. data-[_constant]-[offset]-[anchor]-[anchor].
-	var rxKeyframeAttribute = /^data(?:-(_\w+))?(?:-?(-?\d+))?(?:-?(start|end|top|center|bottom))?(?:-?(top|center|bottom))?$/;
+	var rxKeyframeAttribute = /^data(?:-(_\w+))?(?:-?(-?\d*\.?\d+p?))?(?:-?(start|end|top|center|bottom))?(?:-?(top|center|bottom))?$/;
 
 	var rxPropValue = /\s*([\w\-\[\]]+)\s*:\s*(.+?)\s*(?:;|$)/gi;
 
@@ -149,7 +151,7 @@
 				var deltaTime = _now() - lastTime;
 				var delay = Math.max(0, 1000 / 60 - deltaTime);
 
-				window.setTimeout(function() {
+				return window.setTimeout(function() {
 					lastTime = _now();
 					callback();
 				}, delay);
@@ -157,6 +159,18 @@
 		}
 
 		return requestAnimFrame;
+	};
+
+	var polyfillCAF = function() {
+		var cancelAnimFrame = window.cancelAnimationFrame || window[theCSSPrefix.toLowerCase() + 'CancelAnimationFrame'];
+
+		if(_isMobile || !cancelAnimFrame) {
+			cancelAnimFrame = function(timeout) {
+				return window.clearTimeout(timeout);
+			};
+		}
+
+		return cancelAnimFrame;
 	};
 
 	//Built-in easing functions.
@@ -256,7 +270,7 @@
 
 		//A custom check function may be passed.
 		_isMobile = ((options.mobileCheck || function() {
-			return (/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.userAgent || navigator.vendor || window.opera);
+			return (/Android|iPhone|iPad|iPod|BlackBerry/i).test(navigator.userAgent || navigator.vendor || window.opera);
 		})());
 
 		if(_isMobile) {
@@ -294,7 +308,7 @@
 		//Let's go.
 		(function animloop(){
 			_render();
-			requestAnimFrame(animloop);
+			_animFrame = requestAnimFrame(animloop);
 		}());
 
 		return _instance;
@@ -377,19 +391,7 @@
 					continue;
 				}
 
-				var constant = match[1];
-
-				//If there is a constant, get it's value or fall back to 0.
-				constant = constant && _constants[constant.substr(1)] || 0;
-
-				//Parse key frame offset. If undefined will be casted to 0.
-				var offset = (match[2] | 0) + constant;
-				var anchor1 = match[3];
-				//If second anchor is not set, the first will be taken for both.
-				var anchor2 = match[4] || anchor1;
-
 				var kf = {
-					offset: offset,
 					props: attr.value,
 					//Point back to the element as well.
 					element: el
@@ -397,19 +399,40 @@
 
 				keyFrames.push(kf);
 
+				var constant = match[1];
+
+				if(constant) {
+					//Strip the underscore prefix.
+					kf.constant = constant.substr(1);
+				}
+
+				//Get the key frame offset.
+				var offset = match[2];
+
+				//Is it a percentage offset?
+				if(/p$/.test(offset)) {
+					kf.isPercentage = true;
+					kf.offset = (offset.slice(0, -1) | 0) / 100;
+				} else {
+					kf.offset = (offset | 0);
+				}
+
+				var anchor1 = match[3];
+
+				//If second anchor is not set, the first will be taken for both.
+				var anchor2 = match[4] || anchor1;
+
 				//"absolute" (or "classic") mode, where numbers mean absolute scroll offset.
 				if(!anchor1 || anchor1 === ANCHOR_START || anchor1 === ANCHOR_END) {
 					kf.mode = 'absolute';
 
-					//data-end needs to be calculated after all key frames are know.
+					//data-end needs to be calculated after all key frames are known.
 					if(anchor1 === ANCHOR_END) {
 						kf.isEnd = true;
-					} else {
+					} else if(!kf.isPercentage) {
 						//For data-start we can already set the key frame w/o calculations.
 						//#59: "scale" options should only affect absolute mode.
-						kf.frame = offset * _scale;
-
-						delete kf.offset;
+						kf.offset = kf.offset * _scale;
 					}
 				}
 				//"relative" mode, where numbers are relative to anchors.
@@ -560,11 +583,7 @@
 	};
 
 	Skrollr.prototype.setScrollTop = function(top, force) {
-		//Don't do smooth scrolling (last top === new top).
-		if(force === true) {
-			_lastTop = top;
-			_forceRender = true;
-		}
+		_forceRender = (force === true);
 
 		if(_isMobile) {
 			_mobileOffset = Math.min(Math.max(top, 0), _maxKeyFrame);
@@ -583,6 +602,10 @@
 		}
 	};
 
+	Skrollr.prototype.getMaxScrollTop = function() {
+		return _maxKeyFrame;
+	};
+
 	Skrollr.prototype.on = function(name, fn) {
 		_listeners[name] = fn;
 
@@ -595,6 +618,52 @@
 		return _instance;
 	};
 
+	Skrollr.prototype.destroy = function() {
+		var cancelAnimFrame = polyfillCAF();
+		cancelAnimFrame(_animFrame);
+		_removeAllEvents();
+
+		_updateClass(documentElement, [NO_SKROLLR_CLASS], [SKROLLR_CLASS, SKROLLR_DESKTOP_CLASS, SKROLLR_MOBILE_CLASS]);
+
+		var skrollableIndex = 0;
+		var skrollablesLength = _skrollables.length;
+
+		for(; skrollableIndex < skrollablesLength; skrollableIndex++) {
+			_reset(_skrollables[skrollableIndex].element);
+		}
+
+		documentElement.style.overflow = body.style.overflow = 'auto';
+		documentElement.style.height = body.style.height = 'auto';
+
+		if(_skrollrBody) {
+			skrollr.setStyle(_skrollrBody, 'transform', 'none');
+		}
+
+		_instance = undefined;
+		_skrollrBody = undefined;
+		_listeners = undefined;
+		_forceHeight = undefined;
+		_maxKeyFrame = 0;
+		_scale = 1;
+		_constants = undefined;
+		_mobileDeceleration = undefined;
+		_direction = 'down';
+		_lastTop = -1;
+		_lastViewportWidth = 0;
+		_lastViewportHeight = 0;
+		_requestReflow = false;
+		_scrollAnimation = undefined;
+		_smoothScrollingEnabled = undefined;
+		_smoothScrollingDuration = undefined;
+		_smoothScrolling = undefined;
+		_forceRender = undefined;
+		_skrollableIdCounter = 0;
+		_edgeStrategy = undefined;
+		_isMobile = false;
+		_mobileOffset = 0;
+		_translateZ = undefined;
+	};
+
 	/*
 		Private methods.
 	*/
@@ -603,6 +672,7 @@
 		var initialElement;
 		var initialTouchY;
 		var initialTouchX;
+		var currentElement;
 		var currentTouchY;
 		var currentTouchX;
 		var lastTouchY;
@@ -614,13 +684,22 @@
 		var deltaTime;
 
 		_addEvent(documentElement, [EVENT_TOUCHSTART, EVENT_TOUCHMOVE, EVENT_TOUCHCANCEL, EVENT_TOUCHEND].join(' '), function(e) {
-			e.preventDefault();
-
 			var touch = e.changedTouches[0];
+
+			currentElement = e.target;
+
+			//We don't want text nodes.
+			while(currentElement.nodeType === 3) {
+				currentElement = currentElement.parentNode;
+			}
 
 			currentTouchY = touch.clientY;
 			currentTouchX = touch.clientX;
 			currentTouchTime = e.timeStamp;
+
+			if(!rxTouchIgnoreTags.test(currentElement.tagName)) {
+				e.preventDefault();
+			}
 
 			switch(e.type) {
 				case EVENT_TOUCHSTART:
@@ -631,13 +710,19 @@
 
 					_instance.stopAnimateTo();
 
-					initialElement = e.target;
+					initialElement = currentElement;
+
 					initialTouchY = lastTouchY = currentTouchY;
 					initialTouchX = currentTouchX;
 					initialTouchTime = currentTouchTime;
 
 					break;
 				case EVENT_TOUCHMOVE:
+					//Prevent default event on touchIgnore elements in case they don't have focus yet.
+					if(rxTouchIgnoreTags.test(currentElement.tagName) && document.activeElement !== currentElement) {
+						e.preventDefault();
+					}
+
 					deltaY = currentTouchY - lastTouchY;
 					deltaTime = currentTouchTime - lastTouchTime;
 
@@ -655,9 +740,14 @@
 
 					//Check if it was more like a tap (moved less than 7px).
 					if(distance2 < 49) {
-						//It was a tap, click the element.
-						initialElement.focus();
-						initialElement.click();
+						if(!rxTouchIgnoreTags.test(initialElement.tagName)) {
+							initialElement.focus();
+
+							//It was a tap, click the element.
+							var clickEvent = document.createEvent('MouseEvents');
+							clickEvent.initMouseEvent('click', true, true, e.view, 1, touch.screenX, touch.screenY, touch.clientX, touch.clientY, e.ctrlKey, e.altKey, e.shiftKey, e.metaKey, 0, null);
+							initialElement.dispatchEvent(clickEvent);
+						}
 
 						return;
 					}
@@ -689,7 +779,7 @@
 
 					duration = duration * (1 - targetRatio);
 
-					_instance.animateTo(targetTop, {easing: 'outCubic', duration: duration});
+					_instance.animateTo((targetTop + 0.5) | 0, {easing: 'outCubic', duration: duration});
 					break;
 			}
 		});
@@ -700,10 +790,13 @@
 	};
 
 	/**
-	 * Updates key frames which depend on others.
+	 * Updates key frames which depend on others / need to be updated on resize.
 	 * That is "end" in "absolute" mode and all key frames in "relative" mode.
+	 * Also handles constants, because they may change on resize.
 	 */
 	var _updateDependentKeyFrames = function() {
+		var viewportHeight = documentElement.clientHeight;
+		var processedConstants = _processConstants();
 		var skrollable;
 		var element;
 		var anchorTarget;
@@ -713,6 +806,8 @@
 		var kf;
 		var skrollableIndex;
 		var skrollablesLength;
+		var offset;
+		var constantValue;
 
 		//First process all relative-mode elements and find the max key frame.
 		skrollableIndex = 0;
@@ -730,13 +825,28 @@
 			for(; keyFrameIndex < keyFramesLength; keyFrameIndex++) {
 				kf = keyFrames[keyFrameIndex];
 
+				offset = kf.offset;
+				constantValue = processedConstants[kf.constant] || 0;
+
+				kf.frame = offset;
+
+				if(kf.isPercentage) {
+					//Convert the offset to percentage of the viewport height.
+					offset = offset * viewportHeight;
+
+					//Absolute + percentage mode.
+					kf.frame = offset;
+				}
+
 				if(kf.mode === 'relative') {
 					_reset(element);
 
-					kf.frame = _instance.relativeToAbsolute(anchorTarget, kf.anchors[0], kf.anchors[1]) - kf.offset;
+					kf.frame = _instance.relativeToAbsolute(anchorTarget, kf.anchors[0], kf.anchors[1]) - offset;
 
 					_reset(element, true);
 				}
+
+				kf.frame += constantValue;
 
 				//Only search for max key frame when forceHeight is enabled.
 				if(_forceHeight) {
@@ -765,8 +875,10 @@
 			for(; keyFrameIndex < keyFramesLength; keyFrameIndex++) {
 				kf = keyFrames[keyFrameIndex];
 
+				constantValue = processedConstants[kf.constant] || 0;
+
 				if(kf.isEnd) {
-					kf.frame = _maxKeyFrame - kf.offset;
+					kf.frame = _maxKeyFrame - kf.offset + constantValue;
 				}
 			}
 
@@ -905,8 +1017,8 @@
 
 			_instance.setScrollTop(renderTop, true);
 		}
-		//Smooth scrolling only if there's no animation running and if we're not on mobile.
-		else if(!_isMobile) {
+		//Smooth scrolling only if there's no animation running and if we're not forcing the rendering.
+		else if(!_forceRender) {
 			var smoothScrollingDiff = _smoothScrolling.targetTop - renderTop;
 
 			//The user scrolled, start new smooth scrolling.
@@ -938,7 +1050,7 @@
 		//Did the scroll position even change?
 		if(_forceRender || _lastTop !== renderTop) {
 			//Remember in which direction are we scrolling?
-			_direction = (renderTop >= _lastTop) ? 'down' : 'up';
+			_direction = (renderTop > _lastTop) ? 'down' : (renderTop < _lastTop ? 'up' : _direction);
 
 			_forceRender = false;
 
@@ -1217,8 +1329,14 @@
 		//Make sure z-index gets a <integer>.
 		//This is the only <integer> case we need to handle.
 		if(prop === 'zIndex') {
-			//Floor
-			style[prop] = '' + (val | 0);
+			if(isNaN(val)) {
+				//If it's not a number, don't touch it.
+				//It could for example be "auto" (#351).
+				style[prop] = val;
+			} else {
+				//Floor the number.
+				style[prop] = '' + (val | 0);
+			}
 		}
 		//#64: "float" can't be set across browsers. Needs to use "cssFloat" for all except IE.
 		else if(prop === 'float') {
@@ -1261,16 +1379,55 @@
 
 		names = names.split(' ');
 
+		var name;
 		var nameCounter = 0;
 		var namesLength = names.length;
 
 		for(; nameCounter < namesLength; nameCounter++) {
+			name = names[nameCounter];
+
 			if(element.addEventListener) {
-				element.addEventListener(names[nameCounter], callback, false);
+				element.addEventListener(name, callback, false);
 			} else {
-				element.attachEvent('on' + names[nameCounter], intermediate);
+				element.attachEvent('on' + name, intermediate);
+			}
+
+			//Remember the events to be able to flush them later.
+			_registeredEvents.push({
+				element: element,
+				name: name,
+				listener: callback
+			});
+		}
+	};
+
+	var _removeEvent = skrollr.removeEvent = function(element, names, callback) {
+		names = names.split(' ');
+
+		var nameCounter = 0;
+		var namesLength = names.length;
+
+		for(; nameCounter < namesLength; nameCounter++) {
+			if(element.removeEventListener) {
+				element.removeEventListener(names[nameCounter], callback, false);
+			} else {
+				element.detachEvent('on' + names[nameCounter], callback);
 			}
 		}
+	};
+
+	var _removeAllEvents = function() {
+		var eventData;
+		var eventCounter = 0;
+		var eventsLength = _registeredEvents.length;
+
+		for(; eventCounter < eventsLength; eventCounter++) {
+			eventData = _registeredEvents[eventCounter];
+
+			_removeEvent(eventData.element, eventData.name, eventData.listener);
+		}
+
+		_registeredEvents = [];
 	};
 
 	var _reflow = function() {
@@ -1300,6 +1457,32 @@
 		}
 
 		_forceRender = true;
+	};
+
+	/*
+	 * Returns a copy of the constants object where all functions and strings have been evaluated.
+	 */
+	var _processConstants = function() {
+		var viewportHeight = documentElement.clientHeight;
+		var copy = {};
+		var prop;
+		var value;
+
+		for(prop in _constants) {
+			value = _constants[prop];
+
+			if(typeof value === 'function') {
+				value = value.call(_instance);
+			}
+			//Percentage offset.
+			else if((/p$/).test(value)) {
+				value = (value.slice(0, -1) / 100) * viewportHeight;
+			}
+
+			copy[prop] = value;
+		}
+
+		return copy;
 	};
 
 	/*
@@ -1490,4 +1673,20 @@
 
 	//If the browser supports 3d transforms, this will be filled with 'translateZ(0)' (empty string otherwise).
 	var _translateZ;
+
+	//Will contain data about registered events by skrollr.
+	var _registeredEvents = [];
+
+	//Animation frame id returned by RequestAnimationFrame (or timeout when RAF is not supported).
+	var _animFrame;
+
+	//Expose skrollr as either a global variable or a require.js module
+	if(typeof define === 'function' && define.amd) {
+		define('skrollr', function () {
+			return skrollr;
+		});
+	} else {
+		window.skrollr = skrollr;
+	}
+
 }(window, document));

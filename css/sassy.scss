@@ -1,255 +1,14 @@
 @import 'bourbon/bourbon';
-
-//whitesmoke   color: #F5F5F5;
-// @function outline($stroke, $color) {
-//   @return -$stroke+px $stroke+px $color, -$stroke*2+px $stroke*2+px $color, -$stroke*3+px $stroke*3+px $color, -$stroke*4+px $stroke*4+px $color;
-// }
-@function outline($stroke, $color) {
-  @return $stroke+px $stroke+px $color, -$stroke+px $stroke+px $color, ($stroke+px) (-$stroke+px) $color, (-$stroke+px) (-$stroke+px) $color;
-}
-
-$logo-W: 200px;
-$logo-H: 50px;
-$bar-height: 20%;
-$bar-width: 40%;
-$bar-spacing: 160%;
-
-@font-face{ 
-  font-family: 'bodonitown';
-  src: url('../assets/fonts/Bodonitown-webfont.eot');
-  src: url('../assets/fonts/Bodonitown-webfont.eot?iefix') format('eot'),
-       url('../assets/fonts/Bodonitown-webfont.woff') format('woff'),
-       url('../assets/fonts/Bodonitown-webfont.ttf') format('truetype'),
-       url('../assets/fonts/Bodonitown-webfont.svg#webfont') format('svg');
-}
-
-@font-face {
-    font-family: 'Gotham';
-    src: url('../assets/fonts/Gotham-Book.otf') format('opentype');
-    font-weight: 300, 400, normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Gotham';
-    src: url('../assets/fonts/Gotham-BookItalic.otf') format('opentype');
-    font-weight: 300, 400, normal;
-    font-style: italic;
-}
-@font-face {
-    font-family: 'Gotham';
-    src: url('../assets/fonts/Gotham-Bold.otf') format('opentype');
-    font-weight: bold;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Gotham';
-    src: url('../assets/fonts/GothamBoldItalic.otf') format('opentype');
-    font-weight: bold;
-    font-style: italic;
-}
-@font-face {
-    font-family: 'deming';
-    src: url('../assets/fonts/Deming EP.ttf') format('truetype');
-}
-//'Old Standard TT'
-// @import url(http://fonts.googleapis.com/css?family=Old+Standard+TT:400,400italic,700);
-
-* {
-  box-sizing: border-box;
-}
-html, body {
-  height: 100%;
-}
-body {
-  font-size: 16px;
-  background-color: #F5F5F5;
-}
-h1 {
-  // font-size: 3em;
-  font-size: 4em;
-  font-family: 'gotham';
-  font-weight: bold;
-  text-transform: uppercase;
-
-}
-h2 {
-  font-size: 2.4em;
-  font-family: 'gotham';
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-bottom: 1em;
-  width: auto;
-  display: block;
-  border-bottom: 2px solid #ccc;
-  padding-bottom: 5px;
-  color: #ccc;
-  text-align: right;
-  font-weight: 400;
-  cursor: default;
-}
-h3 {
-  font-size: 1.6em;
-  font-family: 'gotham';
-  text-transform: uppercase;
-}
-p {
-  font-size: 1.2em;
-}
-h1 a, h2 a, h3 a, h4 a {
-  text-decoration: none;
-  color: #000;
-  padding: 5px;
-  &:hover {
-    background-color: #000;
-    color: #fff;
-    text-decoration: none;
-  }
-}
-//Old h3 was an overlay of the experiments and stuff. unsure how 
-// h3 {
-//     font-family: 'deming', 'courier new', courier, serif;
-//     color: #000;
-//     font-weight: bold;
-//     text-align: center;
-//     font-size: 2em;
-//     margin: 20px 0;
-// }
-p {
-  // font-family: 'bodonitown', georgia, serif;
-  // font-family: 'Old Standard TT', georgia, serif;
-  font-family: 'courier new', courier, georgia, serif;
-  letter-spacing: 1px;
-  font-size: 1.2em;
-  line-height: 1.6em;
-}
-hr {
-  border: 1px dashed #ccc;
-  margin: 1em auto;
-}
-//header styles
-
-header {
-  padding: 20px;
-  text-align: left;
-  background-color: whitesmoke;
-}
-nav {
-  display: inline-block;
-  margin-left: 5%;
-  a {
-  font-family: 'gotham';
-  font-size: 1.4em;
-  font-weight: bold;
-  letter-spacing: 2px;
-  width: auto;
-  display: inline-block;
-  // padding-bottom: 5px;
-  padding: 0 10px;
-  line-height: $logo-H;
-  color: #000;
-  text-transform: uppercase;
-  text-decoration: none;
-    // &:visited {
-    //     color: #000;
-    //   }
-    &:hover {
-      background-color: #000;
-      color: #fff;
-      text-decoration: none;
-    }
-  }
-}
+@import 'sass/variables-functions';
+@import 'sass/fonts';
+@import 'sass/base-styles';
+@import 'sass/logo'; //important to have logo before other elements; vars here referenced elsewhere
+@import 'sass/header';
+@import 'sass/jumbotron';
+//mobile overrides at bottom
 
 
-//logo-styles
-.logo {
-  width: $logo-W;
-  height: $logo-H;
-  margin: 0;
-  line-height: 0;
-  display: inline-block;
-  vertical-align: middle;
-  .e {
-    width: $bar-width;
-    height: $bar-height;
-    background-color: black;
-    position: relative;
-    display: inline-block;
-    margin-right: 5%;
-  }
-  .e:before {
-    content: '';
-    background-color: black;
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: $bar-spacing;
-  }
-  .e:after {
-    content: '';
-    background-color: black;
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: $bar-spacing*2;
-  }
-  .f {
-    width: $bar-width;
-    height: $bar-height;
-    background-color: black;
-    position: relative;
-    display: inline-block;
-    margin-right: 0px;
-  }
-  .f:before {
-    content: '';
-    background-color: black;
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: $bar-spacing;
-  }
-  
-}
-.logo-link {
-  display: inline-block;
-  text-decoration: none;
-}
-.jumbotron {
-  width: 100%;
-  height: 100%;
-  background-image: url('../assets/img/USS_Macon_over_Manhattan.png');
-  background-size: cover;
-  position: relative;
-  .logo {
-    width: $logo-W*3;
-    height: $logo-H*3;
-    position: absolute;
-    margin: auto;
-    top: 0; left: 0; bottom: 0; right: 0;
-    .f:after {
-      content: 'front end / ux';
-      display: block;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      font-family: 'gotham';
-      font-size: 1.7em;
-      font-weight: bold;
-      text-transform: uppercase;
-      top: $bar-spacing*2.35;
-    }
-    h1 {
-      // text-shadow: -1px 1px #000, -2px 2px #BA2700, -3px 3px #BA2700;
-      text-shadow: -2px 2px 4px rgba(0,0,0,.5);
-      margin-top: 150px;
-    }
-  }
-}
-
+//LANDING PAGE STRUCTURE
 .landing-blog {
   // max-width: 50em;
   // padding-top: 2em;
@@ -279,6 +38,8 @@ section {
   display: block;
   margin: 0 auto;
 }
+
+
 .experiments {
   text-align: center;
   h3 {
@@ -286,30 +47,14 @@ section {
     padding-top: 20px;
   }
 }
-//commented out pen is from when they were next to each other
-/*.pen {
-  // display: inline-block;
-  display: inline-table;
-  width: 40%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  min-height: 300px;
-  border-radius: 4px;
-  text-decoration: none;
-  vertical-align: top;
-  margin: 0 2%;
-  border-bottom: none;
-  position: relative;
-  z-index: 1;
-  min-width: 435px;
-}*/
 .pen {
   display: table;
   width: 100%;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  min-height: 300px;
+  // not min-height because of bug in FF
+  height: 300px;
   text-decoration: none;
   vertical-align: top;
   margin: 20px 0;
@@ -319,29 +64,6 @@ section {
   &:visited {
     color: inherit;
   }
-  /*&:nth-child(even) {
-    float: left;
-  }
-  &:nth-child(odd) {
-    float: right;
-  }*/
-  /*.tint {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 62%;
-    height: 90%;
-    max-width: 270px;
-    border-radius: 100%;
-    margin: auto;
-    background-color: black;
-    opacity: .6;
-    z-index: 2;
-    display: inline;
-    transition: all .2s;
-  }*/
   .tint {
     position: absolute;
     top: 0;
@@ -357,38 +79,18 @@ section {
     display: inline;
     transition: all .4s;
   }
-  /*h4 {
-    font-size: 1.6em;
-    font-family: 'courier new', courier, monospace;
-    font-weight: 300;
-    color: #fff;
-    position: relative;
-    z-index: 3;
-    width: 100%;
-    margin: 0 auto;
-    display: table-cell;
-    padding: 0 19%;
-    text-align: center;
-    vertical-align: middle;
-  }*/
   h1 {
     z-index: 3;
     position: relative;
-    // transition: all .2s;
     cursor: pointer;
   }
   &:hover {
     text-decoration: none;
   }
-  // &:hover .tint {
-  //   opacity: .8;
-  //   transition: all .4s;
-  // }
   &:hover h1 {
     background-color: black;
-    color: white;
+    color: $whitesmoke;
     text-shadow: none;
-    // transition: all .2s;
   }
 }
 .overlay-wrapper, .overlay {
@@ -400,54 +102,17 @@ section {
 .overlay {
     display: inline;
     padding: .2em;
-    text-shadow: 0px 0px 100px whitesmoke;
+    line-height: 150%;
+    text-shadow: 0px 0px 100px $whitesmoke;
 }
 .pen.shooting-gallery {
-  background-image: url('../assets/img/courtesy-old-photos.blogspot.com_-bw.jpg');
-  // h3 {
-  //   margin-top: 80px;
-  //   line-height: 65px;
-  // }
+  background-image: url('../assets/img/kids-guns_wide-2000.jpg');
 }
 .pen.rotating-nav {
-  background-image: url('../assets/img/compass-bw.jpg');
-  // h1 {
-  //   margin-top: 80px;
-  //   line-height: 65px;
-  // }
+  background-image: url('../assets/img/johnsons-map-of-NYC-1866-2000.jpg');
 }
 
-@media screen and (max-width: 767px) {
-  h3 {
-    font-size: 1.4em;
-    margin-top: 0;
-  }
-  .pen {
-    display: table;
-    width: 100%;
-    background-size: cover;
-    min-height: auto;
-    margin: 0 auto;
-  }
-  .pen.shooting-gallery {
-  h3 {
-    margin-top: 0;
-  }
-}
-}
-@media screen and (max-width: 600px) {
-  .jumbotron {
-    background-position: -200px 0;
-    .logo {
-      width: $logo-W*1.5;
-      height: $logo-H*1.5;
-      .f:after {
-        font-size: .8em;
-        text-shadow: 0px 0px 25px white;
-      }
-    }
-  }
-}
+
 
 
 
@@ -465,6 +130,10 @@ section {
 //.post styles are with .posts
 .post {
   text-align: left;
+}
+.post-info {
+  color: #aaa;
+  font-size: 1.4em;
 }
 
 
@@ -521,3 +190,9 @@ footer {
     width: 100%;
   }
 }
+
+
+
+
+
+@import 'sass/mobile';

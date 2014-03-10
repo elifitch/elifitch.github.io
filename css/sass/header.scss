@@ -1,0 +1,31 @@
+header {
+  padding: 20px;
+  text-align: left;
+  background-color: $whitesmoke;
+}
+nav {
+  display: inline-block;
+  margin-left: 5%;
+  a {
+  font-family: $gotham-fam;
+  font-size: 1.4em;
+  font-weight: bold;
+  letter-spacing: 2px;
+  width: auto;
+  display: inline-block;
+  // padding-bottom: 5px;
+  padding: 0 10px;
+  line-height: $logo-H;
+  color: #000;
+  text-transform: uppercase;
+  text-decoration: none;
+    // &:visited {
+    //     color: #000;
+    //   }
+    &:hover {
+      background-color: #000;
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+}

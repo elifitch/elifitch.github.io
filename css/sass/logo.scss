@@ -1,0 +1,65 @@
+//This is for the base logo in the header, not the jumbotron
+//vars modified for jumbotron version
+
+$logo-W: 200px;
+$logo-H: 50px;
+$bar-height: 20%;
+$bar-width: 40%;
+$bar-spacing: 160%;
+
+.logo {
+  width: $logo-W;
+  height: $logo-H;
+  margin: 0;
+  line-height: 0;
+  display: inline-block;
+  vertical-align: middle;
+  .e {
+    width: $bar-width;
+    height: $bar-height;
+    background-color: black;
+    position: relative;
+    display: inline-block;
+    margin-right: 5%;
+  }
+  .e:before {
+    content: '';
+    background-color: black;
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: $bar-spacing;
+  }
+  .e:after {
+    content: '';
+    background-color: black;
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: $bar-spacing*2;
+  }
+  .f {
+    width: $bar-width;
+    height: $bar-height;
+    background-color: black;
+    position: relative;
+    display: inline-block;
+    margin-right: 0px;
+  }
+  .f:before {
+    content: '';
+    background-color: black;
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: $bar-spacing;
+  } 
+}
+
+.logo-link {
+  display: inline-block;
+  text-decoration: none;
+}

@@ -1,0 +1,84 @@
+@media screen and (max-width: 767px) {
+  h3 {
+    font-size: 1.4em;
+    margin-top: 0;
+  }
+  .pen {
+    display: table;
+    width: 100%;
+    background-size: cover;
+    min-height: auto;
+    margin: 0 auto;
+  }
+  .pen.shooting-gallery {
+  h3 {
+    margin-top: 0;
+  }
+}
+}
+@media screen and (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+  section {
+    width: 90%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  header {
+    padding: 10px;
+    .logo {
+      width: 50%;
+      height: 35px;
+      vertical-align: top;
+    }
+  }
+  nav {
+    width: 48%;
+    margin: 0;
+    text-align: right;
+    margin-top: -.6em;
+    a {
+      font-size: 1.2em;
+      margin-left: -5px;
+      padding: 0 5px;
+      display: block;
+      line-height: 2em;
+    }
+  }
+  .jumbotron {
+    height: 50%;
+    .logo {
+      width: $logo-W*1.5;
+      height: $logo-H*1.5;
+      .f:after {
+        font-size: .9em;
+        text-shadow: 0px 0px 25px white;
+      }
+    }
+  }
+  .pen {
+    margin-bottom: 20px 0;
+  }
+  .overlay {
+      font-size: 3em;
+      line-height: 1.4em;
+    }
+
+  .post {
+    width: 90%;
+  }
+  footer {
+    h2 {
+      text-align: center;
+    }
+    .footer-menu {
+      width: 100%;
+    }
+  }
+}
+@media screen and (max-width: 400px) {
+  .jumbotron {
+    // background-position: -50px 0;
+  }
+}

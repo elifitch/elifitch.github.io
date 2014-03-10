@@ -1,0 +1,7 @@
+$whitesmoke: #F5F5F5;
+$gotham-fam: 'Gotham', 'Helvetica Neue', Helvetica, Arial, sans-serif;;
+$courier-fam: 'Courier New', courier, monaco, monospace;
+
+@function outline($stroke, $color) {
+  @return $stroke+px $stroke+px $color, -$stroke+px $stroke+px $color, ($stroke+px) (-$stroke+px) $color, (-$stroke+px) (-$stroke+px) $color;
+}

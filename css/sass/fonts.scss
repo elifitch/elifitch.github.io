@@ -1,0 +1,69 @@
+@font-face{ 
+  font-family: 'bodonitown';
+  src: url('../assets/fonts/Bodonitown-webfont.eot');
+  src: url('../assets/fonts/Bodonitown-webfont.eot?iefix') format('eot'),
+       url('../assets/fonts/Bodonitown-webfont.woff') format('woff'),
+       url('../assets/fonts/Bodonitown-webfont.ttf') format('truetype'),
+       url('../assets/fonts/Bodonitown-webfont.svg#webfont') format('svg');
+}
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('../assets/fonts/Gotham-Book.otf') format('opentype');
+    font-weight: 300, 400, normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Gotham';
+    src: url('../assets/fonts/Gotham-BookItalic.otf') format('opentype');
+    font-weight: 300, 400, normal;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Gotham';
+    src: url('../assets/fonts/Gotham-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Gotham';
+    src: url('../assets/fonts/GothamBoldItalic.otf') format('opentype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+
+@font-face {
+    font-family: 'deming';
+    src: url('../assets/fonts/Deming EP.ttf') format('truetype');
+}
+
+
+@font-face {
+  font-family: 'Courier New';
+  src: url('../assets/fonts/Courier New.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Courier New';
+  src: url('../assets/fonts/Courier New Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Courier New';
+  src: url('../assets/fonts/Courier New Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Courier New';
+  src: url('../assets/fonts/Courier New Bold Italic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+
+// 'Old Standard TT'
+@import url(http://fonts.googleapis.com/css?family=Old+Standard+TT:400,400italic,700);

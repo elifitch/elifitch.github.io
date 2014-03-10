@@ -1,0 +1,109 @@
+* {
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+}
+body {
+  font-size: 16px;
+  background-color: #F5F5F5;
+  color: #000;
+}
+h1 {
+  // font-size: 3em;
+  font-size: 4em;
+  font-family: $gotham-fam;
+  font-weight: bold;
+  text-transform: uppercase;
+
+}
+h2 {
+  font-size: 2.4em;
+  font-family: $gotham-fam;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 1em;
+  width: auto;
+  display: block;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 5px;
+  color: #ccc;
+  text-align: right;
+  font-weight: 400;
+  cursor: default;
+}
+h3 {
+  font-size: 1.6em;
+  font-family: $gotham-fam;
+  text-transform: uppercase;
+}
+a {
+  text-decoration: none;
+  font-family: $courier-fam;
+  color: #000;
+  &:hover {
+    text-decoration: none;
+  }
+  &:visited {
+    color: inherit;
+  }
+}
+h1 a, h2 a, h3 a, h4 a {
+  text-decoration: none;
+  color: #000;
+  padding: 5px;
+  border: none;
+  font-family: $gotham-fam;
+  &:hover {
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
+  }
+}
+//Old h3 was an overlay of the experiments and stuff. 
+// h3 {
+//     font-family: 'deming', 'courier new', courier, serif;
+//     color: #000;
+//     font-weight: bold;
+//     text-align: center;
+//     font-size: 2em;
+//     margin: 20px 0;
+// }
+p {
+  // font-family: 'bodonitown', georgia, serif;
+  // font-family: 'Old Standard TT', georgia, serif;
+  // font-family: 'courier new', courier, georgia, serif;
+  font-family: $courier-fam;
+  letter-spacing: 1px;
+  font-size: 1.2em;
+  line-height: 1.6em;
+  a {
+    border-bottom: 1px dashed #999;
+    &:hover {
+      border-bottom: 1px solid #000;
+    }
+  }
+}
+blockquote {
+  display: block;
+  padding: 20px;
+  margin: 10px 0;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  font-family: $gotham-fam;
+  font-size: 1.6em;
+  font-style: italic;
+  text-transform: uppercase;
+  color: #999;
+  .attrib {
+    display: block;
+    width: 100%;
+    text-align: right;
+    color: #ccc;
+    margin-top: 20px;
+  }
+}
+hr {
+  border: 1px dashed #ccc;
+  margin: 1em auto;
+}

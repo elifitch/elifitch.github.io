@@ -3,4 +3,5 @@ markdown: redcarpet
 pygments: true
 safe: true
 lsi: false
+excerpt_separator: "<!--break-->"
 # source: elifitch.github.io

@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>{{ page.title }}</title>
         <!-- <meta name="viewport" content="width=device-width"> -->
-        <meta name="viewport" content="width=device-width; initial-scale=.5; maximum-scale=.5; minimum-scale=.5;">
+        <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1; minimum-scale=1;">
 
         <!-- syntax highlighting CSS -->
         <link rel="stylesheet" href="/css/syntax.css">
@@ -13,14 +13,8 @@
         <!-- Custom CSS -->
         <link rel="stylesheet" href="/css/main.css">
         <link rel="stylesheet" href="/css/styles.css">
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script type="text/javascript">
-          if (typeof jQuery == 'undefined') {
-              document.write(unescape("%3Cscript src='/js/jquery-1.10.2.min.js' type='text/javascript'%3E%3C/script%3E"));
-          }
-        </script>
-        <script src="../js/jquery.localscroll-1.2.7-min.js"></script>
-        <script src="../js/jquery.scrollTo-1.4.3.1-min.js"></script>
+        
+        {% include scripts.html %}
 
     </head>
     <body>
@@ -41,43 +35,24 @@
 
           <section class="experiments clearfix " id="experiments">
             <h2>Experiments</h2>
-            <a href="http://codepen.io/EliFitch/pen/waJpo" class="pen shooting-gallery">
+            <a href="http://codepen.io/EliFitch/pen/waJpo" class="pen shooting-gallery" data-bottom-bottom="background-position: 0px -150px" data-top-top="background-position: 0px -200px">
               <div class="tint"></div>
               <div class="overlay-wrapper"><h1 class="overlay">CSS Shooting Gallery</h1></div>
             </a>
-            <a href="http://codepen.io/EliFitch/pen/zGqHK" class="pen rotating-nav">
+            <a href="http://codepen.io/EliFitch/pen/zGqHK" class="pen rotating-nav" data-bottom-bottom="background-position: 0px -150px" data-top-top="background-position: 0px -200px">
               <div class="tint"></div>
               <div class="overlay-wrapper"><h1 class="overlay">Rotating CSS3D Nav</h1></div>
             </a>
             <h3>More coming soon.</h3>
           </section>
-          {% include footer.html %}
-          
-          <!--<script type="text/javascript">
-            $(".shooting-gallery").click(function(){
-              $(this).html("");
-            });
 
+          {% include footer.html %}
+          <!--<script src="/js/skrollr.js"></script>
+          <script>
+            var asdfasdf = skrollr.init({
+              forceHeight: false
+            });
           </script>-->
-          <!--<script type="text/javascript">
-          $('a[href="#exp"').click(function(e){
-            e.preventDefautlt();
-            $.scrollTo('#exp');
-          });
-        </script>-->
-        <script type="text/javascript">
-          $(document).ready(function(){
-            $('header').localScroll();
-          })
-        </script>
-        <script>
-        console.log('script runs');
-        $(document).on('resize', function(){
-          console.log('running');
-          $('.overlay').css('line height', $(this).parent().css('line height'));
-        });
-        </script>
-          
     </body>
 </html>
 

@@ -10,6 +10,10 @@ layout: default
 	{% endif %}
 </div>
 <div class="post">
-	<p class="meta">{{ page.date | date_to_string }}</p>
+	<span class="post-info">{{ page.date | date_to_string }}</span><!-- <a class="post-info" target="_blank" href="http://twitter.com/home?status={{page.title}} -- by @EliFitch at www.elifitch.com{{page.url}}">Tweet this</a> -->
+	<a class="post-info" href="http://twitter.com/home?status={{page.title}} -- by @EliFitch at www.elifitch.com{{page.url}}">Tweet this</a>
+
+	<!-- window.open("http://www.w3schools.com");
+	-->
 	{{ content }}
 </div>
