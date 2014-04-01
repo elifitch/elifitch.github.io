@@ -105,12 +105,17 @@ section {
     line-height: 150%;
     text-shadow: 0px 0px 100px $whitesmoke;
 }
+.pen.smiley-guy {
+  background-image: url('../assets/img/mickey-mouse-old-free-757823.jpg');
+  background-position: center top;
+}
 .pen.shooting-gallery {
   background-image: url('../assets/img/kids-guns_wide-2000.jpg');
 }
 .pen.rotating-nav {
   background-image: url('../assets/img/johnsons-map-of-NYC-1866-2000.jpg');
 }
+
 
 
 
@@ -125,6 +130,7 @@ section {
   background-size: cover;
   position: relative;
   display: table;
+  margin-bottom: 2em;
 }
 
 //.post styles are with .posts
@@ -133,7 +139,8 @@ section {
 }
 .post-info {
   color: #aaa;
-  font-size: 1.4em;
+  font-size: 1em;
+  font-family: Monaco, "Courier New", monospace;
 }
 
 
