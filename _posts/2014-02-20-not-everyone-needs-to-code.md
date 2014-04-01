@@ -8,7 +8,7 @@ excerptShort: herple derple
 hero: FS-classroom235.jpg
 hero-adj: 
 ---
-Everyone should learn to code.  Everybody knows it. You know it, I know it, the [president](http://www.whitehouse.gov/blog/2013/12/09/don-t-just-play-your-phone-program-it) knows it.  The economy is shifting and the job market along with it, with developers more in demand than ever, you and your children will be left behind if you cannot code.  Start them early, perhaps with this [book on ruby for kids](http://www.helloruby.com/).  This isn't the first time innovation has forced wholesale change in the american workforce.  <!-- break --> I found the following news clipping from the 1870s.
+Everyone should learn to code.  Everybody knows it. You know it, I know it, the [president](http://www.whitehouse.gov/blog/2013/12/09/don-t-just-play-your-phone-program-it) knows it.  The economy is shifting and the job market along with it, with developers more in demand than ever, you and your children will be left behind if you cannot code.  Start them early, perhaps with this [book on ruby for kids](http://www.helloruby.com/).  This isn't the first time innovation has forced wholesale change in the american workforce.  <BREAK> I found the following news clipping from the 1870s.
 
 <p style="font-size: 100%; margin: 20px;">Everyone should learn to build trains.  The economy is shifting, and the job market along with it, with trains more in demand than ever, you and your children will be left behind if you cannot construct at least a simple steam engine.  Start them early, perhaps with a book on traingineering, or in your friendly neighborhood sweatshop.</p>
 

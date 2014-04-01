@@ -3,6 +3,6 @@ markdown: redcarpet
 pygments: true
 safe: true
 lsi: false
-excerpt_separator: "<!-- break -->"
+excerpt_separator: "<BREAK>"
 url: 'http://elifitch.github.io'
 # source: elifitch.github.io
