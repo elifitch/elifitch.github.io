@@ -117,7 +117,7 @@ p {
   font-family: "Courier New", courier, monaco, monospace;
   letter-spacing: 1px;
   font-size: 1.2em;
-  line-height: 1.6em; }
+  line-height: 1.4em; }
   p a {
     border-bottom: 1px dashed #999; }
     p a:hover {
@@ -292,23 +292,7 @@ section {
   z-index: 1; }
   .pen:visited {
     color: inherit; }
-  .pen .tint {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    margin: auto;
-    background-color: #fff;
-    opacity: .2;
-    z-index: 2;
-    display: inline;
-    transition: all .4s; }
   .pen h1 {
-    z-index: 3;
-    position: relative;
     cursor: pointer; }
   .pen:hover {
     text-decoration: none; }
@@ -316,6 +300,22 @@ section {
     background-color: black;
     color: whitesmoke;
     text-shadow: none; }
+
+.tint {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  background-color: #fff;
+  background-color: #FAEBD7;
+  opacity: .2;
+  z-index: 2;
+  display: inline;
+  transition: all .4s; }
 
 .overlay-wrapper, .overlay {
   display: table-cell;
@@ -326,7 +326,9 @@ section {
 .overlay {
   display: inline;
   padding: .2em;
-  line-height: 150%; }
+  line-height: 150%;
+  z-index: 3;
+  position: relative; }
 
 .pen.smiley-guy {
   background-image: url("../assets/img/mickey-mouse-old-free-757823.jpg");
@@ -339,13 +341,18 @@ section {
   background-image: url("../assets/img/johnsons-map-of-NYC-1866-2000.jpg"); }
 
 .hero {
-  width: 100%;
-  height: 50%;
-  background-position: center center;
-  background-size: cover;
-  position: relative;
   display: table;
-  margin-bottom: 2em; }
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 300px;
+  text-decoration: none;
+  vertical-align: top;
+  margin: 20px 0;
+  border-bottom: none;
+  position: relative;
+  z-index: 1; }
 
 .post {
   text-align: left; }

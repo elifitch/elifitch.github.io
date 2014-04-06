@@ -65,24 +65,9 @@ section {
   &:visited {
     color: inherit;
   }
-  .tint {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    margin: auto;
-    background-color: #fff;
-    opacity: .2;
-    z-index: 2;
-    display: inline;
-    transition: all .4s;
-  }
   h1 {
-    z-index: 3;
-    position: relative;
+    // z-index: 3;
+    // position: relative;
     cursor: pointer;
   }
   &:hover {
@@ -94,6 +79,22 @@ section {
     text-shadow: none;
   }
 }
+.tint {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    background-color: #fff;
+    background-color: #FAEBD7;
+    opacity: .2;
+    z-index: 2;
+    display: inline;
+    transition: all .4s;
+  }
 .overlay-wrapper, .overlay {
     display: table-cell;
     text-align: center;
@@ -104,6 +105,8 @@ section {
     display: inline;
     padding: .2em;
     line-height: 150%;
+    z-index: 3;
+    position: relative;
     // text-shadow: 0px 0px 100px $whitesmoke; 
 }
 .pen.smiley-guy {
@@ -125,13 +128,27 @@ section {
 
 //POSTS STYLES
 .hero {
-  width: 100%;
-  height: 50%;
-  background-position: center center;
-  background-size: cover;
-  position: relative;
+  // width: 100%;
+  // height: 50%;
+  // background-position: center center;
+  // background-size: cover;
+  // position: relative;
+  // display: table;
+  // margin-bottom: 2em;
+  // z-index: 1;
   display: table;
-  margin-bottom: 2em;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  // not min-height because of bug in FF
+  height: 300px;
+  text-decoration: none;
+  vertical-align: top;
+  margin: 20px 0;
+  border-bottom: none;
+  position: relative;
+  z-index: 1;
 }
 
 //.post styles are with .posts

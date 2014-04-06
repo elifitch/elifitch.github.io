@@ -76,7 +76,8 @@ p {
   font-family: $courier-fam;
   letter-spacing: 1px;
   font-size: 1.2em;
-  line-height: 1.6em;
+  // line-height: 1.6em;
+  line-height: 1.4em;
   a {
     border-bottom: 1px dashed #999;
     &:hover {
