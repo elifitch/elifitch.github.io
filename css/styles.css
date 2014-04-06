@@ -252,6 +252,7 @@ nav {
 
 .posts, .post {
   max-width: 50em;
+  width: 95%;
   margin: 0 auto;
   display: block; }
   .posts h3 a, .post h3 a {
@@ -300,8 +301,8 @@ section {
     width: 100%;
     height: 100%;
     margin: auto;
-    background-color: black;
-    opacity: 0;
+    background-color: #fff;
+    opacity: .2;
     z-index: 2;
     display: inline;
     transition: all .4s; }
@@ -325,8 +326,7 @@ section {
 .overlay {
   display: inline;
   padding: .2em;
-  line-height: 150%;
-  text-shadow: 0px 0px 100px whitesmoke; }
+  line-height: 150%; }
 
 .pen.smiley-guy {
   background-image: url("../assets/img/mickey-mouse-old-free-757823.jpg");
@@ -354,6 +354,9 @@ section {
   color: #aaa;
   font-size: 1em;
   font-family: Monaco, "Courier New", monospace; }
+
+.tweet-link {
+  float: right; }
 
 footer {
   color: #666;
@@ -395,28 +398,35 @@ footer {
     display: inline-block;
     width: 100%; }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   h3 {
     font-size: 1.4em;
     margin-top: 0; }
+
+  nav {
+    margin-left: 0; }
+
+  section {
+    width: 90%;
+    padding-left: 0;
+    padding-right: 0; }
+
+  .jumbotron {
+    height: 80%; }
 
   .pen {
     display: table;
     width: 100%;
     background-size: cover;
     min-height: auto;
-    margin: 0 auto; }
+    margin: 0 auto;
+    margin-bottom: 20px; }
 
   .pen.shooting-gallery h3 {
     margin-top: 0; } }
 @media screen and (max-width: 600px) {
   body {
     font-size: 14px; }
-
-  section {
-    width: 90%;
-    padding-left: 0;
-    padding-right: 0; }
 
   header {
     padding: 10px; }
@@ -445,9 +455,6 @@ footer {
       .jumbotron .logo .f:after {
         font-size: .9em;
         text-shadow: 0px 0px 25px white; }
-
-  .pen {
-    margin-bottom: 20px 0; }
 
   .overlay {
     font-size: 3em;

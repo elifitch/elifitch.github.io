@@ -1,7 +1,18 @@
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   h3 {
     font-size: 1.4em;
     margin-top: 0;
+  }
+  nav {
+    margin-left: 0;
+  }
+  section {
+    width: 90%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .jumbotron {
+    height: 80%;
   }
   .pen {
     display: table;
@@ -9,6 +20,7 @@
     background-size: cover;
     min-height: auto;
     margin: 0 auto;
+    margin-bottom: 20px;
   }
   .pen.shooting-gallery {
   h3 {
@@ -19,11 +31,6 @@
 @media screen and (max-width: 600px) {
   body {
     font-size: 14px;
-  }
-  section {
-    width: 90%;
-    padding-left: 0;
-    padding-right: 0;
   }
   header {
     padding: 10px;
@@ -56,9 +63,6 @@
         text-shadow: 0px 0px 25px white;
       }
     }
-  }
-  .pen {
-    margin-bottom: 20px 0;
   }
   .overlay {
       font-size: 3em;

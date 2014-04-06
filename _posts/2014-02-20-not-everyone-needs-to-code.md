@@ -35,9 +35,9 @@ Just because creating more coders isn't the imperitive it is so often presented 
 Improving our public schools is far from the path of least resistance, though it might have the broadest impact
 </blockquote>
 
-I don't see a future where everyone knows 3 programming languages, builds all their own apps, and spends high school architecting software.  I do see a future where computer science lives alongside high school biology, where basic literacy in programming concepts, if not functional experience in the field, is expected of high school graduates.  Just as biology prepares students for careers in the natural sciences, requiring basic computer science would give every kid a better shot at becoming a software engineer, without the expectation that they <b>should</b> choose that path.
+I don't see a future where everyone knows 3 programming languages, builds all their own apps, understands big O, algorithms, data scrutctures and spends high school architecting software.  I do see a future where computer science lives alongside high school biology, where basic literacy in programming concepts, if not functional experience in the field, is expected of high school graduates.  Just as biology prepares students for careers in the natural sciences, requiring basic computer science would give every kid a better shot at becoming a software engineer, without the expectation that they <b>should</b> choose that path.  Moreover, it would give future engineers a much more level playing field, lowering barriers to entry and creating a more diverse tech community.
 
-Of course, if this is the desired outcome, simply advocating for required coding classes in public schools isn't enough.  Schools will need money to buy computers, and teachers paid well enough to 
+Of course, if this is the desired outcome, simply advocating for required coding classes in public schools isn't enough.  Schools will need money to buy computers, and teachers paid well enough to stay in teaching, even with their specialized knowledge.  It will take a tremendous amount of work and campaigning to accomplish even these modest goals.  Just remember when you wish that more people would code, that you aren't just a tech advocate, you're an advocate for public education.
 
 
 
