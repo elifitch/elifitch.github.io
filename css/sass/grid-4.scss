@@ -1,0 +1,139 @@
+.grid-4 {
+  text-align: center;
+  a {
+    display: inline-block;
+    width: 20%;
+    margin-right: 20px;
+    height: 200px;
+    text-align: center;
+    vertical-align: top;
+    position: relative;
+    margin-bottom: 10px;
+    &:nth-child(4) {
+      margin-right: 0;
+    }
+    &:nth-child(8) {
+      margin-right: 0;
+    }
+    &:nth-child(12) {
+      margin-right: 0;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+    img {
+      width: 100%;
+    }
+    span {
+      opacity: 0;
+      // line-height: 50px;
+      display: block;
+      transition: all .2s;
+    }
+    &:hover {
+      span { opacity: 1; transition: all .2s;}
+    }
+  }
+  .klare img {
+    width: 80%;
+    padding-bottom: 20%;
+  }
+  .ross {
+    img {
+      width: 25%;
+      margin-left: 4%;
+      margin-top: 10%;
+    }
+    span {
+      margin-top: 20%;
+    }
+  }
+  .geoff img {
+    margin-top: 25%;
+    margin-bottom: 30%;
+  }
+  .fletcher, .matt {
+    span {
+      margin-top: 5%;
+    }
+  }
+  .brian {
+    img {
+      -moz-transform: scaleX(-1);
+      -o-transform: scaleX(-1);
+      -webkit-transform: scaleX(-1);
+      transform: scaleX(-1);
+      filter: FlipH;
+      -ms-filter: "FlipH";
+    }
+  }
+  .david {
+    img {
+      margin-top: 10%;
+    }
+    span{
+      margin-top: 23%;
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .grid-4 {
+    text-align: center;
+    a {
+      display: block;
+      width: 80%;
+      margin: 0 auto;
+      margin-bottom: 40px;
+
+      span {
+        margin-top: -20%;
+        opacity: 1;
+      }
+      &:nth-child(4) {
+        margin-right: auto;
+      }
+      &:nth-child(8) {
+        margin-right: auto;
+      }
+      &:nth-child(12) {
+        margin-right: auto;
+      }
+      &:last-child {
+        margin-right: auto;
+      }
+    }
+    .jesse, .fletcher, .matt, .chris, .kate, .brian, .david, .dad, .mom {
+      margin-bottom: 100px;
+    }
+    .jesse {
+      span {
+        margin-top: 0;
+      }
+    }
+    .chris {
+      span {
+        margin-top: -15%;
+      }
+    }
+    .kate {
+      span {
+        margin-top: -5%;
+      }
+    }
+    .dad {
+      span {
+        margin-top: 0;
+      }
+    }
+    .mom {
+      span {
+        margin-top: -10%;
+      }
+    }
+    .fletcher {
+      margin-bottom: 120px;
+    }
+
+  }
+}

@@ -2,7 +2,7 @@
 layout: default
 ---
 <!--<style>{% include post.css %}</style>-->
-<div class="hero" style="background-image:url('../../assets/img/hero/{{page.hero}}')">
+<div class="hero" style="background-image:url('../../assets/img/hero/{{page.hero}}'); {{page.hero-adj}}">
 	<div class="tint"></div>
 	<div class="overlay-wrapper"><h1 class="overlay">{{ page.title }}</h1></div>
 	{% if page.subtitle %}
@@ -18,4 +18,5 @@ layout: default
 	<!-- window.open("http://www.w3schools.com");
 	-->
 	{{ content }}
+	<a class="post-info tweet-link" href="http://twitter.com/home?status={{page.title}} -- by @EliFitch at {{site.url}}{{page.url}}">Tweet this post</a>
 </div>

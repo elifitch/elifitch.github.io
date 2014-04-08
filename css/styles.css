@@ -223,7 +223,7 @@ nav {
 .jumbotron {
   width: 100%;
   height: 100%;
-  background-image: url("/assets/img/USS_Macon_over_Manhattan.png");
+  background-image: url("/assets/img/USS_Macon_over_Manhattan.jpg");
   background-size: cover;
   position: relative; }
   .jumbotron .logo {
@@ -250,6 +250,93 @@ nav {
       text-shadow: -2px 2px 4px rgba(0, 0, 0, 0.5);
       margin-top: 150px; }
 
+.grid-4 {
+  text-align: center; }
+  .grid-4 a {
+    display: inline-block;
+    width: 20%;
+    margin-right: 20px;
+    height: 200px;
+    text-align: center;
+    vertical-align: top;
+    position: relative;
+    margin-bottom: 10px; }
+    .grid-4 a:nth-child(4) {
+      margin-right: 0; }
+    .grid-4 a:nth-child(8) {
+      margin-right: 0; }
+    .grid-4 a:nth-child(12) {
+      margin-right: 0; }
+    .grid-4 a:last-child {
+      margin-right: 0; }
+    .grid-4 a img {
+      width: 100%; }
+    .grid-4 a span {
+      opacity: 0;
+      display: block;
+      transition: all .2s; }
+    .grid-4 a:hover span {
+      opacity: 1;
+      transition: all .2s; }
+  .grid-4 .klare img {
+    width: 80%;
+    padding-bottom: 20%; }
+  .grid-4 .ross img {
+    width: 25%;
+    margin-left: 4%;
+    margin-top: 10%; }
+  .grid-4 .ross span {
+    margin-top: 20%; }
+  .grid-4 .geoff img {
+    margin-top: 25%;
+    margin-bottom: 30%; }
+  .grid-4 .fletcher span, .grid-4 .matt span {
+    margin-top: 5%; }
+  .grid-4 .brian img {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH"; }
+  .grid-4 .david img {
+    margin-top: 10%; }
+  .grid-4 .david span {
+    margin-top: 23%; }
+
+@media screen and (max-width: 400px) {
+  .grid-4 {
+    text-align: center; }
+    .grid-4 a {
+      display: block;
+      width: 80%;
+      margin: 0 auto;
+      margin-bottom: 40px; }
+      .grid-4 a span {
+        margin-top: -20%;
+        opacity: 1; }
+      .grid-4 a:nth-child(4) {
+        margin-right: auto; }
+      .grid-4 a:nth-child(8) {
+        margin-right: auto; }
+      .grid-4 a:nth-child(12) {
+        margin-right: auto; }
+      .grid-4 a:last-child {
+        margin-right: auto; }
+    .grid-4 .jesse, .grid-4 .fletcher, .grid-4 .matt, .grid-4 .chris, .grid-4 .kate, .grid-4 .brian, .grid-4 .david, .grid-4 .dad, .grid-4 .mom {
+      margin-bottom: 100px; }
+    .grid-4 .jesse span {
+      margin-top: 0; }
+    .grid-4 .chris span {
+      margin-top: -15%; }
+    .grid-4 .kate span {
+      margin-top: -5%; }
+    .grid-4 .dad span {
+      margin-top: 0; }
+    .grid-4 .mom span {
+      margin-top: -10%; }
+    .grid-4 .fletcher {
+      margin-bottom: 120px; } }
 .posts, .post {
   max-width: 50em;
   width: 95%;
@@ -355,7 +442,8 @@ section {
   z-index: 1; }
 
 .post {
-  text-align: left; }
+  text-align: left;
+  margin-bottom: 80px; }
 
 .post-info {
   color: #aaa;
@@ -366,6 +454,7 @@ section {
   float: right; }
 
 footer {
+  clear: both;
   color: #666;
   border-top: 4px solid #eee;
   margin-top: 2em;

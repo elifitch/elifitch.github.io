@@ -5,6 +5,7 @@
 @import 'sass/logo'; //important to have logo before other elements; vars here referenced elsewhere
 @import 'sass/header';
 @import 'sass/jumbotron';
+@import 'sass/grid-4';
 //mobile overrides at bottom
 
 
@@ -154,6 +155,7 @@ section {
 //.post styles are with .posts
 .post {
   text-align: left;
+  margin-bottom: 80px;
 }
 .post-info {
   color: #aaa;
@@ -165,8 +167,11 @@ section {
 }
 
 
+
+
 //FOOTER STYLES
 footer {
+  clear: both;
   color: #666;
   border-top: 4px solid #eee;
   margin-top: 2em;

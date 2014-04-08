@@ -5,4 +5,5 @@ safe: true
 lsi: false
 excerpt_separator: "<BREAK>"
 url: 'http://elifitch.github.io'
+# url: 'http://www.elifitch.com'
 # source: elifitch.github.io
