@@ -32,7 +32,6 @@ function dedupe(array) {
 First, the function maps each item in the array to an object key, and sets the key's value equal to true.  We could just as easily set that value to false or 5 or 'blue' or whatever we wanted, all that matters is we're storing the array as keys.  Object keys are always unique.
 
 {% highlight javascript linenos=table %}
-
 var array = ['archer','lana','pam','lana','cyril']
 
 for (var i = 0; i < array.length; i++) {
@@ -41,7 +40,6 @@ for (var i = 0; i < array.length; i++) {
 
 //Result: {archer: true, lana: true, pam: true, cyril: true}
 //Notice only one LAAAANAAAAAAAAAAAA
-
 {% endhighlight %}
 
 So when we loop through the array setting elements to object keys, if two elements in the array are both 'lana', the object will get a key dedupeObj.lana set to true, and then the loop will set dedupeObj.lana to true again.  Uniqueness!

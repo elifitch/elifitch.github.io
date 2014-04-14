@@ -173,6 +173,9 @@ section {
 .highlighttable {
   width: 100%;
   background-color: #333;
+  //hack to get it looking right on phones
+  display: block;
+  overflow: scroll;
   .linenos {
     max-width: 25px;
     color: #fff;
@@ -189,6 +192,10 @@ section {
 //   -o-filter: grayscale(100%);
 //   filter: gray;
 // }
+.post iframe {
+  width: 100%;
+  overflow: scroll;
+}
 
 
 
