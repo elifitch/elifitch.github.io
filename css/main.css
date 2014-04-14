@@ -41,12 +41,12 @@ a:hover   { text-decoration: underline; }
 
 .posts li {
   line-height: 1.75em;
+  /*font-size: 80%;*/
 }
 
 .posts span {
   color: #aaa;
   font-family: Monaco, "Courier New", monospace;
-  font-size: 80%;
 }
 
 /*****************************************************************************/
@@ -131,9 +131,12 @@ a:hover   { text-decoration: underline; }
 
 /* standard */
 .post pre {
-  border: 1px solid #ddd;
-  background-color: #eef;
-  padding: 0 .4em;
+  /*border: 1px solid #ddd;*/
+  /*background-color: #eef;*/
+  background-color: #333;
+  /*padding: 0 .4em;*/
+  /*padding: 1em;*/
+  font-size: .8em;
 }
 
 .post ul, .post ol {
@@ -142,7 +145,8 @@ a:hover   { text-decoration: underline; }
 
 .post code {
   border: 1px solid #ddd;
-  background-color: #eef;
+  /*background-color: #eef;*/
+  background-color: #333;
   padding: 0 .2em;
 }
 
@@ -161,6 +165,22 @@ a:hover   { text-decoration: underline; }
   background-color: #333;
 }
 
+
+/*.post pre *, .post code {
+  color: #fff;
+  font-family: Monaco, "Courier New", monospace;
+}*/
+pre *, code {
+  color: #fff;
+  font-family: Monaco, "Courier New", monospace;
+}
+.post pre {
+  background-color: #333;
+  /*padding: 1em;*/
+}
+.posts pre {
+  font-size: 80%;
+}
 
 /*****************************************************************************/
 /*

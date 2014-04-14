@@ -6,6 +6,7 @@
 @import 'sass/header';
 @import 'sass/jumbotron';
 @import 'sass/grid-4';
+@import 'sass/code-highlight';
 //mobile overrides at bottom
 
 
@@ -164,8 +165,30 @@ section {
 }
 .tweet-link {
   float: right;
+  &:last-of-type {
+    margin-bottom: 40px;
+  }
 }
-
+//post code
+.highlighttable {
+  width: 100%;
+  background-color: #333;
+  .linenos {
+    max-width: 25px;
+    color: #fff;
+    padding: 5px;
+  }
+}
+//making disqus grayscale
+// .post iframe {
+//   filter: url("data:image/svg+xml;utf8,<svg%20xmlns='http://www.w3.org/2000/svg'><filter%…200.3333%200.3333%200%200%200%200%200%201%200'/></filter></svg>#grayscale");
+//   filter: grayscale(100%);
+//   -webkit-filter: grayscale(100%);
+//   -moz-filter: grayscale(100%);
+//   -ms-filter: grayscale(100%);
+//   -o-filter: grayscale(100%);
+//   filter: gray;
+// }
 
 
 

@@ -1,6 +1,7 @@
 name: Your New Jekyll Site
 markdown: redcarpet
-pygments: true
+#pygments: true
+highlighter: pygments
 safe: true
 lsi: false
 excerpt_separator: "<BREAK>"
