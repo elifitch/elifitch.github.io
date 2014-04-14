@@ -9,7 +9,6 @@
 @import 'sass/code-highlight';
 //mobile overrides at bottom
 
-
 //LANDING PAGE STRUCTURE
 .landing-blog {
   // max-width: 50em;
@@ -181,6 +180,9 @@ section {
     color: #fff;
     padding: 5px;
   }
+}
+.post .highlight pre span {
+  font-size: 11px;
 }
 //making disqus grayscale
 // .post iframe {

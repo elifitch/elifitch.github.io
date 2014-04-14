@@ -714,6 +714,13 @@ section {
     color: #fff;
     padding: 5px; }
 
+.post .highlight pre span {
+  font-size: 11px; }
+
+.post iframe {
+  width: 100%;
+  overflow: scroll; }
+
 footer {
   clear: both;
   color: #666;
