@@ -91,7 +91,8 @@ h2 {
 h3 {
   font-size: 1.6em;
   font-family: "Gotham", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  margin: 0.4em 0; }
 
 a {
   text-decoration: none;
@@ -708,7 +709,9 @@ section {
   width: 100%;
   background-color: #333;
   display: block;
-  overflow: scroll; }
+  overflow: scroll;
+  border-radius: 3px;
+  font-size: 14px; }
   .highlighttable .linenos {
     max-width: 25px;
     color: #fff;

@@ -175,6 +175,8 @@ section {
   //hack to get it looking right on phones
   display: block;
   overflow: scroll;
+  border-radius: 3px;
+  font-size: 14px; //hack to get the line numbers to show up right
   .linenos {
     max-width: 25px;
     color: #fff;
