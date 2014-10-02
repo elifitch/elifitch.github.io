@@ -5,3 +5,41 @@ $courier-fam: 'Courier New', courier, monaco, monospace;
 @function outline($stroke, $color) {
   @return $stroke+px $stroke+px $color, -$stroke+px $stroke+px $color, ($stroke+px) (-$stroke+px) $color, (-$stroke+px) (-$stroke+px) $color;
 }
+
+@mixin highlight(
+  $padding: 0,
+  $background-color: #ff0,
+  $color: inherit
+){
+  & {
+    position: relative;
+    z-index: 0;
+  }
+  & span {
+    position: relative;
+    background: $background-color;
+    @if ($color != inherit) {
+      color: $color;
+    }
+    padding: $padding 0;
+    box-shadow:
+           $padding 0 $background-color,
+          -$padding 0 $background-color;
+    z-index: -1;
+  }
+  & h1 {
+    position: relative;
+    background: $background-color;
+    @if ($color != inherit) {
+      color: $color;
+    }
+    padding: $padding 0;
+    box-shadow:
+           $padding 0 $background-color,
+          -$padding 0 $background-color;
+    z-index: -1;
+  }
+  &:not(.blurb) span {
+    left: $padding;
+  }
+}

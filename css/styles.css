@@ -117,8 +117,8 @@ h1 a, h2 a, h3 a, h4 a {
 p {
   font-family: "Courier New", courier, monaco, monospace;
   letter-spacing: 1px;
-  font-size: 1.2em;
-  line-height: 1.4em; }
+  font-size: 1em;
+  line-height: 1.6em; }
   p a {
     border-bottom: 1px dashed #999; }
     p a:hover {
@@ -633,10 +633,27 @@ section {
     cursor: pointer; }
   .pen:hover {
     text-decoration: none; }
+    .pen:hover {
+      position: relative;
+      z-index: 0; }
+    .pen:hover span {
+      position: relative;
+      background: black;
+      color: whitesmoke;
+      padding: 0.25em 0;
+      box-shadow: 0.25em 0 black, -0.25em 0 black;
+      z-index: -1; }
+    .pen:hover h1 {
+      position: relative;
+      background: black;
+      color: whitesmoke;
+      padding: 0.25em 0;
+      box-shadow: 0.25em 0 black, -0.25em 0 black;
+      z-index: -1; }
+    .pen:hover:not(.blurb) span {
+      left: 0.25em; }
   .pen:hover h1 {
-    background-color: black;
-    color: whitesmoke;
-    text-shadow: none; }
+    z-index: 2; }
 
 .tint {
   position: absolute;
@@ -670,6 +687,9 @@ section {
 .pen.smiley-guy {
   background-image: url("../assets/img/mickey-mouse-old-free-757823.jpg");
   background-position: center top; }
+
+.pen.node-dc {
+  background-image: url("../assets/img/dc-from-space.jpg"); }
 
 .pen.shooting-gallery {
   background-image: url("../assets/img/kids-guns_wide-2000.jpg"); }

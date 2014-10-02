@@ -73,11 +73,10 @@ section {
   }
   &:hover {
     text-decoration: none;
+    @include highlight(0.25em, black, $whitesmoke);
   }
   &:hover h1 {
-    background-color: black;
-    color: $whitesmoke;
-    text-shadow: none;
+    z-index: 2;
   }
 }
 .tint {
@@ -113,6 +112,9 @@ section {
 .pen.smiley-guy {
   background-image: url('../assets/img/mickey-mouse-old-free-757823.jpg');
   background-position: center top;
+}
+.pen.node-dc {
+  background-image: url('../assets/img/dc-from-space.jpg');
 }
 .pen.shooting-gallery {
   background-image: url('../assets/img/kids-guns_wide-2000.jpg');
