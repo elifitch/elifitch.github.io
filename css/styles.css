@@ -3,59 +3,49 @@
   font-family: 'bodonitown';
   src: url("../assets/fonts/Bodonitown-webfont.eot");
   src: url("../assets/fonts/Bodonitown-webfont.eot?iefix") format("eot"), url("../assets/fonts/Bodonitown-webfont.woff") format("woff"), url("../assets/fonts/Bodonitown-webfont.ttf") format("truetype"), url("../assets/fonts/Bodonitown-webfont.svg#webfont") format("svg"); }
-
 @font-face {
   font-family: 'Gotham';
   src: url("../assets/fonts/Gotham-Book.otf") format("opentype");
   font-weight: 300, 400, normal;
   font-style: normal; }
-
 @font-face {
   font-family: 'Gotham';
   src: url("../assets/fonts/Gotham-BookItalic.otf") format("opentype");
   font-weight: 300, 400, normal;
   font-style: italic; }
-
 @font-face {
   font-family: 'Gotham';
   src: url("../assets/fonts/Gotham-Bold.otf") format("opentype");
   font-weight: bold;
   font-style: normal; }
-
 @font-face {
   font-family: 'Gotham';
   src: url("../assets/fonts/GothamBoldItalic.otf") format("opentype");
   font-weight: bold;
   font-style: italic; }
-
 @font-face {
   font-family: 'deming';
   src: url("../assets/fonts/Deming EP.ttf") format("truetype"); }
-
 @font-face {
   font-family: 'Courier New';
   src: url("../assets/fonts/Courier New.ttf") format("truetype");
   font-weight: normal;
   font-style: normal; }
-
 @font-face {
   font-family: 'Courier New';
   src: url("../assets/fonts/Courier New Bold.ttf") format("truetype");
   font-weight: bold;
   font-style: normal; }
-
 @font-face {
   font-family: 'Courier New';
   src: url("../assets/fonts/Courier New Italic.ttf") format("truetype");
   font-weight: normal;
   font-style: italic; }
-
 @font-face {
   font-family: 'Courier New';
   src: url("../assets/fonts/Courier New Bold Italic.ttf") format("truetype");
   font-weight: bold;
   font-style: italic; }
-
 * {
   box-sizing: border-box; }
 
@@ -199,7 +189,7 @@ hr {
 header {
   padding: 20px;
   text-align: left;
-  background-color: whitesmoke; }
+  background-color: #F5F5F5; }
 
 nav {
   display: inline-block;
@@ -246,7 +236,8 @@ nav {
       font-size: 1.7em;
       font-weight: bold;
       text-transform: uppercase;
-      top: 376%; }
+      top: 376%;
+      white-space: nowrap; }
     .jumbotron .logo h1 {
       text-shadow: -2px 2px 4px rgba(0, 0, 0, 0.5);
       margin-top: 150px; }
@@ -639,14 +630,14 @@ section {
     .pen:hover span {
       position: relative;
       background: black;
-      color: whitesmoke;
+      color: #F5F5F5;
       padding: 0.25em 0;
       box-shadow: 0.25em 0 black, -0.25em 0 black;
       z-index: -1; }
     .pen:hover h1 {
       position: relative;
       background: black;
-      color: whitesmoke;
+      color: #F5F5F5;
       padding: 0.25em 0;
       box-shadow: 0.25em 0 black, -0.25em 0 black;
       z-index: -1; }
@@ -854,3 +845,5 @@ footer {
     text-align: center; }
   footer .footer-menu {
     width: 100%; } }
+
+/*# sourceMappingURL=styles.css.map */
